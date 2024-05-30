@@ -40,8 +40,10 @@ def generate_graph(number_of_nodes, saturation = 50):
     
     return graph
 
-def print_graph(grapg):
-    pass
+def print_graph(graph):
+    for v, neighbours in graph.items():
+        print(f"{v} -> {' -> '.join(map(str, neighbours))}" if neighbours else f"{v} ->")
+        
 def euler(graph):
     pass
 def hamilton(graph):
