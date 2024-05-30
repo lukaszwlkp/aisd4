@@ -1,8 +1,10 @@
 import argparse
 from generate_graph import generate_non_hamilton, generate_graph
 
-def print_graph(grapg):
-    pass
+def print_graph(graph):
+    for v, neighbours in graph.items():
+        print(f"{v} -> {' -> '.join(map(str, neighbours))}" if neighbours else f"{v} ->")
+        
 def euler(graph):
     pass
 def hamilton(graph):
