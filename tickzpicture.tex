@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+
+
+\begin{document}
+\begin{figure}
+	\centering
+{ % Create enviroment - a tikzpicture with my styling for nodes
+	\begin{tikzpicture}[auto, node distance=2cm, every loop/.style={},
+		every node/.style={fill=red!60,circle,inner sep=1pt, minimum size=6mm}]
+		 \input{graph.tex}
+	\end{tikzpicture}
+}
+\end{figure}
+
+\end{document}

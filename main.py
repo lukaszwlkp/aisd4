@@ -1,5 +1,6 @@
 import argparse
 from generate_graph import generate_non_hamilton, generate_graph
+from functions import get_neighbours, export
 
 def print_graph(graph):
     for v, neighbours in graph.items():
@@ -8,8 +9,6 @@ def print_graph(graph):
 def euler(graph):
     pass
 def hamilton(graph):
-    pass
-def export(graph):
     pass
 
 if __name__ == '__main__':
