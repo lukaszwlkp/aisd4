@@ -16,3 +16,7 @@ def export_to_latex(graph, number_of_nodes):
     with open("graph.tex", "w") as f:
         f.write(tikz_code)
     print("Graph successfully exported")
+
+def print_graph(graph):
+    for v, neighbours in graph.items():
+        print(f"{v} -> {' -> '.join(map(str, neighbours))}" if neighbours else f"{v} ->")
