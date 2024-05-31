@@ -1,27 +1,22 @@
 import argparse
 from generate_graph import generate_non_hamilton, generate_graph
-from functions import get_neighbours, export_to_latex
+from functions import get_neighbours, export_to_latex, print_graph
+from algorithms import hamilton
 
-def print_graph(graph):
-    for v, neighbours in graph.items():
-        print(f"{v} -> {' -> '.join(map(str, neighbours))}" if neighbours else f"{v} ->")
-        
 def euler(graph):
-    pass
-def hamilton(graph):
     pass
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--hamilton',action='store_true', help='Graph with Hamilton Cycle')
-    group.add_argument('--non-hamilton',action='store_true', help='Graph without Hamilton Cycle')
+    group.add_argument('--hamilton' ,action='store_true', help='Graph with Hamilton Cycle')
+    group.add_argument('--non-hamilton' ,action='store_true', help='Graph without Hamilton Cycle')
     args = parser.parse_args()
     number_of_nodes = int(input("nodes> "))
     if args.hamilton:
         saturation = int(input("saturation> "))
         graph = generate_graph(number_of_nodes, saturation)
-    elif args.non-hamilton:
+    elif args.non_hamilton:
         graph = generate_non_hamilton(number_of_nodes)
     while(True):
         choice=input("action> ").strip().lower()
@@ -29,7 +24,7 @@ if __name__ == '__main__':
             print("""Help        Show this message
 Print       Print the graph
 Euler       Find Euler Cycle in the graph
-Hamilton    Find Hamilton Cycele in the graph
+Hamilton    Find Hamilton Cycle in the graph
 Export      Export the graph to tickzpicture
 Exit        Exits the program (same as ctrl+D)""")
         elif choice=="print":
@@ -37,9 +32,9 @@ Exit        Exits the program (same as ctrl+D)""")
         elif choice=="euler":
             euler(graph)
         elif choice=="hamilton":
-            hamilton(graph)
+            print(hamilton(number_of_nodes,graph))
         elif choice=="export":
-            export_to_latex(graph)
+            export_to_latex(graph,number_of_nodes)
         elif choice=="exit":
             break
         else:
