@@ -1,6 +1,6 @@
 import argparse
 from generate_graph import generate_non_hamilton, generate_graph
-from functions import get_neighbours, export
+from functions import get_neighbours, export_to_latex
 
 def print_graph(graph):
     for v, neighbours in graph.items():
@@ -39,7 +39,7 @@ Exit        Exits the program (same as ctrl+D)""")
         elif choice=="hamilton":
             hamilton(graph)
         elif choice=="export":
-            export(graph)
+            export_to_latex(graph)
         elif choice=="exit":
             break
         else:

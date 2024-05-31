@@ -1,7 +1,7 @@
 def get_neighbours(graph, node):
     return graph.get(node, [])
 
-def export(graph, number_of_nodes):
+def export_to_latex(graph, number_of_nodes):
     def export(graph):
         tikz_code = ""
         for node in range(1, number_of_nodes+1):
