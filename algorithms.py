@@ -1,4 +1,5 @@
 from functions import get_neighbours
+import copy
 
 def hamilton(n,graph):
     O = [False] * (n + 1)
@@ -24,3 +25,17 @@ def hamilton(n,graph):
     hcycle_bool = hamiltonian(start)
     hcycle_path = Path[1:] if hcycle_bool else None
     return hcycle_bool, hcycle_path
+
+def dfs_euler(graph, v, stack):
+    neighbours = get_neighbours(graph, v)
+    for u in neighbours:
+        graph[v].remove(u)
+        graph[u].remove(v)
+        dfs_euler(graph, u, stack)
+    stack.append(v)
+    
+def euler(graph):
+    graph_copy = copy.deepcopy(graph)
+    stack =[]
+    dfs_euler(graph_copy, 1, stack)
+    return (stack[::-1])

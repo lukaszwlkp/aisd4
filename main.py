@@ -1,7 +1,7 @@
 import argparse
 from generate_graph import generate_non_hamilton, generate_graph
 from functions import get_neighbours, export_to_latex, print_graph
-from algorithms import hamilton
+from algorithms import hamilton, euler
 
 def euler(graph):
     pass
@@ -30,7 +30,7 @@ Exit        Exits the program (same as ctrl+D)""")
         elif choice=="print":
             print_graph(graph)
         elif choice=="euler":
-            euler(graph)
+            print(euler(graph))
         elif choice=="hamilton":
             print(hamilton(number_of_nodes,graph))
         elif choice=="export":
