@@ -1,29 +1,29 @@
 from functions import get_neighbours
-import copy
+from copy import deepcopy
 
 def hamilton(n,graph):
-    O = [False] * (n + 1)
+    visited_list = [False] * (n + 1)
     Path = [0] * (n + 1)
-    visited, k = 0, 2
+    visited_count, k = 0, 2
     Path[1] = start = 1
     def hamiltonian(v):
-        nonlocal visited, k
-        O[v] = True
-        visited += 1
+        nonlocal visited_count, k
+        visited_list[v] = True
+        visited_count += 1
         neighbours = get_neighbours(graph,v)
         for i in neighbours:
-            if i == start and visited == n:
+            if i == start and visited_count == n:
                 return True
-            if not O[i]:
+            if not visited_list[i]:
                 if (hamiltonian(i)):
                     Path[k] = v
                     k += 1
                     return True
-        O[v] = False
-        visited -= 1
+        visited_list[v] = False
+        visited_count -= 1
         return False
     hcycle_bool = hamiltonian(start)
-    hcycle_path = Path[1:] if hcycle_bool else None
+    hcycle_path = Path[-1:0:-1] if hcycle_bool else None
     return hcycle_bool, hcycle_path
 
 def dfs_euler(graph, v, stack):
@@ -35,7 +35,9 @@ def dfs_euler(graph, v, stack):
     stack.append(v)
     
 def euler(graph):
-    graph_copy = copy.deepcopy(graph)
+    graph_copy = deepcopy(graph)
     stack =[]
     dfs_euler(graph_copy, 1, stack)
-    return (stack[::-1])
+    ecycle_bool = True if len(stack) > 1 else False
+    ecycle_path = stack[::-1] if ecycle_bool else None
+    return ecycle_bool, ecycle_path
