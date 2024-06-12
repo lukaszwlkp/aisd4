@@ -1,0 +1,9 @@
+Algorithm,InputSize,Average
+euler,0002,0.01
+euler,0004,0.02
+euler,0008,0.03
+euler,0016,0.04
+euler,0032,0.04
+euler,0064,0.05
+euler,0128,0.06
+euler,0256,0.08

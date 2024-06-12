@@ -1,0 +1,9 @@
+Algorithm,InputSize,Average
+hamilton,02,0.02
+hamilton,04,0.03
+hamilton,05,0.03
+hamilton,08,0.04
+hamilton,10,0.04
+hamilton,15,3.35
+hamilton,16,12.37
+hamilton,17,116.52
